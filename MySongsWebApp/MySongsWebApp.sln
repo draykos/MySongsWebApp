@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySongsWebApp", "MySongsWebApp\MySongsWebApp.csproj", "{DD9F31DF-2E3C-4F3D-9E25-8E1BF6AADF92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySongsWebApp", "MySongsWebApp\MySongsWebApp.csproj", "{DD9F31DF-2E3C-4F3D-9E25-8E1BF6AADF92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMySongs", "TestMySongs\TestMySongs.csproj", "{727F86C1-40D1-467A-AB45-B0A20E8DB8CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{DD9F31DF-2E3C-4F3D-9E25-8E1BF6AADF92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD9F31DF-2E3C-4F3D-9E25-8E1BF6AADF92}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD9F31DF-2E3C-4F3D-9E25-8E1BF6AADF92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{727F86C1-40D1-467A-AB45-B0A20E8DB8CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{727F86C1-40D1-467A-AB45-B0A20E8DB8CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{727F86C1-40D1-467A-AB45-B0A20E8DB8CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{727F86C1-40D1-467A-AB45-B0A20E8DB8CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
