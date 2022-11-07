@@ -1,3 +1,5 @@
+using MySongsWebApp.Interfaces;
+using MySongsWebApp.Services;
 using NLog;
 using NLog.Web;
 
@@ -11,11 +13,14 @@ try
     // Add services to the container.
     builder.Services.AddControllersWithViews();
 
+    //Dependencies injection
+    builder.Services.AddScoped<ISongService, SongService>();
+
 
     // NLog: Setup NLog for Dependency injection
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
-    
+
     var app = builder.Build();
 
     // Configure the HTTP request pipeline.
