@@ -1,6 +1,22 @@
-﻿@{
-    ViewData["Title"] = "Songs";
-}
-<h1>@ViewData["Title"]</h1>
+﻿@using MySongsWebApp;
+@{
+    var songs = ViewData["Songs"] as List<SongModel>;
+    var title = ViewData["TItle"];
 
-<p>Songs list.</p>
+    void RenderSong(SongModel song) {
+        <li>@song.Id - @song.Title</li>
+    }
+
+    
+}
+<h1>@title</h1>
+
+<p>This is the Songs list</p>
+@if (songs is not null)
+{
+    <ul>
+        @{
+            songs.ForEach(s => RenderSong(s));
+        }
+    </ul>
+}
