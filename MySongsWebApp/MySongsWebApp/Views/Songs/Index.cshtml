@@ -1,4 +1,5 @@
 ﻿@using MySongsWebApp;
+@using MySongsWebApp.Extensions
 @{
     var songs = ViewData["Songs"] as List<SongModel>;
     var title = ViewData["TItle"];
@@ -14,9 +15,16 @@
 <p>This is the Songs list</p>
 @if (songs is not null)
 {
+    <p>My List</p>
     <ul>
         @{
             songs.ForEach(s => RenderSong(s));
         }
+    </ul>
+    <p>My List Sorted</p>
+    <ul>
+    @{
+        songs.SortByName().ForEach(s => RenderSong(s));
+    }
     </ul>
 }
