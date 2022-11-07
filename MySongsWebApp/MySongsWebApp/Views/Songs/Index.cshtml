@@ -1,5 +1,6 @@
 ﻿@using MySongsWebApp;
 @using MySongsWebApp.Extensions
+@using MySongsWebApp.Helpers
 @{
     var songs = ViewData["Songs"] as List<SongModel>;
     var title = ViewData["TItle"];
@@ -8,7 +9,11 @@
         <li class="song">@song.Id - @song.Title</li>
     }
 
-    
+    void RenderSongWithHelper(SongModel song)
+    {
+        @SongHelper.SongRenderer(song)
+    }
+
 }
 <h1>@title</h1>
 
@@ -23,8 +28,14 @@
     </ul>
     <p>My List Sorted</p>
     <ul>
-    @{
-        songs.SortByName().ForEach(s => RenderSong(s));
-    }
+        @{
+            songs.SortByName().ForEach(s => RenderSong(s));
+        }
+    </ul>
+    <p>My List Formatted</p>
+    <ul>
+        @{
+            songs.ForEach(s => RenderSongWithHelper(s));
+        }
     </ul>
 }
