@@ -1,10 +1,11 @@
-﻿using MySongsWebApp.Models;
+﻿using MySongsWebApp.DTO;
+using MySongsWebApp.Models;
 
 namespace MySongsWebApp.Extensions
 {
     public static class Extensions
     {
-        public static List<SongModel> SortByName(this List<SongModel> input)
+        public static List<SongViewModel> SortByName(this List<SongViewModel> input)
         {
             var sorted = input.OrderBy(s => s.Title).ToList();
             return sorted;

@@ -2,14 +2,14 @@
 @using MySongsWebApp.Extensions
 @using MySongsWebApp.Helpers
 @{
-    var songs = ViewData["Songs"] as List<SongModel>;
+    var songs = ViewData["Songs"] as List<SongViewModel>;
     var title = ViewData["TItle"];
 
-    void RenderSong(SongModel song) {
+    void RenderSong(SongViewModel song) {
         <li class="song">@song.Id - @song.Title</li>
     }
 
-    void RenderSongWithHelper(SongModel song)
+    void RenderSongWithHelper(SongViewModel song)
     {
         @SongHelper.SongRenderer(song)
     }

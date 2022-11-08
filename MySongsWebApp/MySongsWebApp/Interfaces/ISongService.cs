@@ -1,9 +1,11 @@
-﻿using MySongsWebApp.Models;
+﻿using MySongsWebApp.DTO;
+using MySongsWebApp.Models;
 
 namespace MySongsWebApp.Interfaces
 {
     public interface ISongService
     {
-        List<SongModel> GetSongs();
+        List<SongViewModel> GetSongs();
+        List<SongViewModel> GetTypes();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MySongsWebApp.DTO;
 using MySongsWebApp.Interfaces;
 using MySongsWebApp.Models;
 
@@ -23,6 +24,15 @@ namespace MySongsWebApp.Controllers
             ViewData["Songs"] = songProvider.GetSongs();
 
             return View();
+        }
+
+        public IActionResult Create(SongViewModel song)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(song);
+            }
+            return Content("Success");
         }
     }
 }
