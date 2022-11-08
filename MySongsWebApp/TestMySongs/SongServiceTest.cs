@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Logging;
 using Moq;
-using MySongsWebApp.Services;
+using MySongs.BLL.Services;
 
 namespace TestMySongs
 {

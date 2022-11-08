@@ -1,21 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace MySongsWebApp.Controllers
+namespace MySongsWebApp.Controllers;
+
+public class SettingsController : Controller
 {
-    public class SettingsController : Controller
+    private readonly ILogger<SettingsController> logger;
+
+    public SettingsController(ILogger<SettingsController> logger)
     {
-        private readonly ILogger<SettingsController> logger;
+        this.logger = logger;
+    }
 
-        public SettingsController(ILogger<SettingsController> logger)
-        {
-            this.logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            logger.LogInformation("Hello, I'm settings");
-            return View();
-        }
+    public IActionResult Index()
+    {
+        logger.LogInformation("Hello, I'm settings");
+        return View();
     }
 }
