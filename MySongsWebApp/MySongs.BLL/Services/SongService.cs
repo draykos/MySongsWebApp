@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using MySongs.DAL;
 using MySongsWebApp.DTO;
 using MySongsWebApp.Interfaces;
 using MySongsWebApp.Models;
@@ -8,15 +9,25 @@ namespace MySongs.BLL.Services;
 public class SongService : ISongService
 {
     private readonly ILogger<SongService> logger;
+    private readonly MySongsContext context;
 
-    public SongService(ILogger<SongService> logger)
+    public SongService(ILogger<SongService> logger, MySongsContext context)
     {
         this.logger = logger;
+        this.context = context;
+    }
+
+    private void TestDB()
+    {
+        var songs = context.Songs.ToList();
+        var x = songs;
+
     }
 
     public List<Song> GetSongs()
     {
         logger.LogInformation("I'm getting songs");
+        TestDB();
 
         var author1 = new Author { Id = 10, Name = "Pink Floyd" };
         var author2 = new Author { Id = 20, Name = "Paul Simon"};

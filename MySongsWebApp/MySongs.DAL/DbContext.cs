@@ -18,7 +18,4 @@ public class MySongsContext : DbContext
         modelBuilder.Entity<Song>().ToTable("Songs");
         modelBuilder.Entity<User>().ToTable("Users");
     }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseNpgsql("Host=localhost; Database=SongsDb; Username=postgres; Password=admin");
 }
