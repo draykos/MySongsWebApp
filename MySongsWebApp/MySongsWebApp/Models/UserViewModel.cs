@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MySongsWebApp.Models;
 
-public class User
+public class UserViewModel
 {
     [Required]
     [StringLength(25)]

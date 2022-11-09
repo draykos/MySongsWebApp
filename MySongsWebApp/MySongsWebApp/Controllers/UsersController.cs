@@ -23,7 +23,7 @@ public class UsersController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(User user)
+    public IActionResult Create(UserViewModel user)
     {
         if (ModelState.IsValid)
         {
