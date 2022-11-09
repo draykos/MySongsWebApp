@@ -1,4 +1,4 @@
-using MySongsWebApp.DTO;
+using MySongs.DTO;
 
 namespace MySongsWebApp.Models;
 

@@ -11,7 +11,7 @@ namespace TestMySongs
         public void GetSongs_is_not_null()
         {
             var logger = new Mock<ILogger<SongService>>();
-            var context = new Mock<MySongsContext>();
+            var context = new Mock<SongsDbContext>();
             var sut = new SongService(logger.Object, context.Object);
             var songs = sut.GetSongs();
 
@@ -22,7 +22,7 @@ namespace TestMySongs
         public void GetSongs_has_at_least_one_item()
         {
             var logger = new Mock<ILogger<SongService>>();
-            var context = new Mock<MySongsContext>();
+            var context = new Mock<SongsDbContext>();
             var sut = new SongService(logger.Object, context.Object);
             var songs = sut.GetSongs();
 

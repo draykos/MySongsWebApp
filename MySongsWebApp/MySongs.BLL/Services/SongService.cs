@@ -1,17 +1,17 @@
 ﻿using Microsoft.Extensions.Logging;
 using MySongs.DAL;
-using MySongsWebApp.DTO;
+using MySongs.DTO;
 using MySongsWebApp.Interfaces;
-using MySongsWebApp.Models;
+using Song = MySongs.DTO.Song;
 
 namespace MySongs.BLL.Services;
 
 public class SongService : ISongService
 {
     private readonly ILogger<SongService> logger;
-    private readonly MySongsContext context;
+    private readonly SongsDbContext context;
 
-    public SongService(ILogger<SongService> logger, MySongsContext context)
+    public SongService(ILogger<SongService> logger, SongsDbContext context)
     {
         this.logger = logger;
         this.context = context;
@@ -19,7 +19,7 @@ public class SongService : ISongService
 
     private void TestDB()
     {
-        var songs = context.Songs.ToList();
+        var songs = context.Songs.First();
         var x = songs;
 
     }

@@ -1,4 +1,5 @@
-﻿using MySongsWebApp.Models;
+﻿using MySongs.DTO;
+using MySongsWebApp.Models;
 
 namespace MySongsWebApp.Common
 {

@@ -14,7 +14,8 @@ public static class IoC
     {
 
         var connectionString = configuration.GetConnectionString("DefaultConnection") ?? String.Empty;
-        services.AddDbContext<MySongsContext>(options =>
+
+        services.AddDbContext<SongsDbContext>(options =>
             options.UseNpgsql(connectionString));
 
         services.AddScoped<ISongService, SongService>();

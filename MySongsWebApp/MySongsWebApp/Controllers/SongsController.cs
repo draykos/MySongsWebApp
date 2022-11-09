@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using MySongs.BLL.Services;
 using MySongsWebApp.Common;
-using MySongsWebApp.DTO;
 using MySongsWebApp.Interfaces;
 using MySongsWebApp.Models;
 

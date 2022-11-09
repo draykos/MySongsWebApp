@@ -1,5 +1,4 @@
-using MySongsWebApp.DTO;
-namespace MySongsWebApp.Models;
+namespace MySongs.DTO;
 
 public class Song
 {

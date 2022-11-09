@@ -1,4 +1,4 @@
-namespace MySongsWebApp.DTO;
+namespace MySongs.DTO;
 
 public class Author
 {
