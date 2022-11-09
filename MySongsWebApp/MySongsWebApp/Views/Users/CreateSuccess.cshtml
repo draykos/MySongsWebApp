@@ -1,0 +1,22 @@
+﻿@model MySongsWebApp.Models.User
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create user</h1>
+
+<p>User @Model.FirstName @Model.LastName has been successfully created</p>
+<div>
+    <label asp-for="FirstName"></label><br />
+    <input asp-for="FirstName" value="@Model.FirstName" readonly>
+</div>
+<br />
+<div>
+    <label asp-for="LastName"></label><br />
+    <input asp-for="LastName" value="@Model.LastName" readonly/>
+</div>
+<br />
+<div>
+    <label asp-for="MailAddress"></label><br />
+    <input asp-for="MailAddress" value="@Model.MailAddress" readonly />
+</div>

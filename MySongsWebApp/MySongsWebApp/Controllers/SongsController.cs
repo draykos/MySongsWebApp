@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MySongs.BLL.Services;
 using MySongsWebApp.Common;
 using MySongsWebApp.DTO;
 using MySongsWebApp.Interfaces;
@@ -10,12 +11,12 @@ namespace MySongsWebApp.Controllers;
 public class SongsController : Controller
 {
     private readonly ILogger<SettingsController> logger;
-    private readonly ISongService songProvider;
+    private readonly ISongService songService;
 
-    public SongsController(ILogger<SettingsController> logger, ISongService songProvider)
+    public SongsController(ILogger<SettingsController> logger, ISongService songService)
     {
         this.logger = logger;
-        this.songProvider = songProvider;
+        this.songService = songService;
     }
 
     public IActionResult Index()
@@ -23,7 +24,7 @@ public class SongsController : Controller
 
         ViewData["Title"] = "Songs";
 
-        var songs = songProvider.GetSongs();
+        var songs = songService.GetSongs();
         ViewData["Songs"] = Mapper.MapSongs(songs);
 
         return View();

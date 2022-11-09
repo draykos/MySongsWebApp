@@ -1,0 +1,28 @@
+﻿@model MySongsWebApp.Models.User
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create user</h1>
+
+<form method="post" asp-controller="Users" asp-action="Create">    
+    <div>
+    <label asp-for="FirstName"></label><br />
+    <input asp-for="FirstName" />
+    <span asp-validation-for="FirstName" style="color: red;"></span>
+    </div>
+    <br />
+    <div>
+    <label asp-for="LastName"></label><br />
+    <input asp-for="LastName" />
+    <span asp-validation-for="LastName" style="color: red;"></span>
+    </div>
+    <br />
+    <div>
+    <label asp-for="MailAddress"></label><br />
+    <input asp-for="MailAddress" />
+    <span asp-validation-for="MailAddress" style="color: red;"></span>
+    </div>
+    <br />
+    <input type="submit" value="Create" />
+</form> 
