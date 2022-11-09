@@ -1,5 +1,4 @@
-using MySongs.BLL.Services;
-using MySongsWebApp.Interfaces;
+using MySongs.DependencyInjection;
 using NLog;
 using NLog.Web;
 
@@ -9,13 +8,15 @@ logger.Debug("init main");
 try
 {
     var builder = WebApplication.CreateBuilder(args);
+    var services = builder.Services;
+    var configuration = builder.Configuration;
 
     // Add services to the container.
-    builder.Services.AddControllersWithViews();
+    services.AddControllersWithViews();
+
 
     //Dependencies injection
-    builder.Services.AddScoped<ISongService, SongService>();
-
+    IoC.Register(configuration, services);
 
     // NLog: Setup NLog for Dependency injection
     builder.Logging.ClearProviders();

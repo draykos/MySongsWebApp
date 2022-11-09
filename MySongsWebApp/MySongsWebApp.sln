@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySongsWebApp", "MySongsWeb
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestMySongs", "TestMySongs\TestMySongs.csproj", "{727F86C1-40D1-467A-AB45-B0A20E8DB8CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySongs.DAL", "MySongs.DAL\MySongs.DAL.csproj", "{B46B0CF9-A503-4FB8-B2AB-F21C01E3DA69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySongs.DAL", "MySongs.DAL\MySongs.DAL.csproj", "{B46B0CF9-A503-4FB8-B2AB-F21C01E3DA69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySongs.BLL", "MySongs.BLL\MySongs.BLL.csproj", "{C5B1835A-2CB3-4FEF-A296-EE12862362FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MySongs.BLL", "MySongs.BLL\MySongs.BLL.csproj", "{C5B1835A-2CB3-4FEF-A296-EE12862362FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libraries", "libraries", "{B6D5DC6B-6BE6-4806-8013-4C36561208ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySongs.DependencyInjection", "MySongs.DependencyInjection\MySongs.DependencyInjection.csproj", "{37C3D25A-22DF-433B-B6D7-28882425FCFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{C5B1835A-2CB3-4FEF-A296-EE12862362FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5B1835A-2CB3-4FEF-A296-EE12862362FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5B1835A-2CB3-4FEF-A296-EE12862362FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37C3D25A-22DF-433B-B6D7-28882425FCFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37C3D25A-22DF-433B-B6D7-28882425FCFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37C3D25A-22DF-433B-B6D7-28882425FCFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37C3D25A-22DF-433B-B6D7-28882425FCFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +48,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B46B0CF9-A503-4FB8-B2AB-F21C01E3DA69} = {B6D5DC6B-6BE6-4806-8013-4C36561208ED}
 		{C5B1835A-2CB3-4FEF-A296-EE12862362FF} = {B6D5DC6B-6BE6-4806-8013-4C36561208ED}
+		{37C3D25A-22DF-433B-B6D7-28882425FCFC} = {B6D5DC6B-6BE6-4806-8013-4C36561208ED}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D3642140-1465-4821-BB44-D78AE3D39676}

@@ -11,10 +11,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
     <PackageReference Include="NLog.Web.AspNetCore" Version="5.1.5" />
+    <PackageReference Include="Npgsql" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MySongs.BLL\MySongs.BLL.csproj" />
+    <ProjectReference Include="..\MySongs.DependencyInjection\MySongs.DependencyInjection.csproj" />
   </ItemGroup>
 
 </Project>
