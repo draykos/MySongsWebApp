@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MySongs.BLL.Services;
-using MySongs.DAL;
+using MySongs.DAL.Models;
 using MySongsWebApp.Interfaces;
 using Npgsql;
 
@@ -16,7 +16,7 @@ public static class IoC
         var connectionString = configuration.GetConnectionString("DefaultConnection") ?? String.Empty;
 
         services.AddDbContext<SongsDbContext>(options =>
-            options.UseNpgsql(connectionString));
+            options.UseSqlServer(connectionString));
 
         services.AddScoped<ISongService, SongService>();
 

@@ -4,6 +4,6 @@ namespace MySongsWebApp.Interfaces;
 
 public interface ISongService
 {
-    List<Song> GetSongs();
-    List<SongType> GetTypes();
+    List<SongDTO> GetSongs();
+    List<SongTypeDTO> GetTypes();
 }

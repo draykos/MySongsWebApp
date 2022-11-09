@@ -5,7 +5,7 @@ namespace MySongsWebApp.Common
 {
     public static class Mapper
     {
-        public static List<SongViewModel> MapSongs(List<Song> songs)
+        public static List<SongViewModel> MapSongs(List<SongDTO> songs)
         {
             return songs.Select(s => new SongViewModel
             {

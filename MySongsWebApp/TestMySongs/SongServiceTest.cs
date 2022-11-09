@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Moq;
 using MySongs.BLL.Services;
-using MySongs.DAL;
+using MySongs.DAL.Models;
 
 namespace TestMySongs
 {

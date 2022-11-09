@@ -1,8 +1,7 @@
 namespace MySongs.DTO;
 
-public class SongType
+public class AuthorDTO
 {
     public int Id { get; set; }
     public string Name { get; set; } = "";
-    public int Popularity { get; set; }
 }

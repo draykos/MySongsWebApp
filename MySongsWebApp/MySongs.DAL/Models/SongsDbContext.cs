@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace MySongs.DAL
+namespace MySongs.DAL.Models
 {
     public partial class SongsDbContext : DbContext
     {
@@ -24,7 +24,7 @@ namespace MySongs.DAL
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=SongsDb;Username=admin;Password=admin;");
+                optionsBuilder.UseSqlServer("Server=LAPTOP-GIANNI\\SQLEXPRESS;Database=SongsDb;User Id=admin;Password=admin;");
             }
         }
 
@@ -32,22 +32,16 @@ namespace MySongs.DAL
         {
             modelBuilder.Entity<Song>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.Title)
-                    .HasMaxLength(100)
-                    .HasColumnName("TItle");
+                entity.Property(e => e.Title).HasMaxLength(100);
             });
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Email).HasMaxLength(50);
 
-                entity.Property(e => e.Email).HasMaxLength(100);
+                entity.Property(e => e.Name).HasMaxLength(50);
 
-                entity.Property(e => e.Name).HasMaxLength(100);
-
-                entity.Property(e => e.Surname).HasMaxLength(100);
+                entity.Property(e => e.Surname).HasMaxLength(50);
             });
 
             OnModelCreatingPartial(modelBuilder);

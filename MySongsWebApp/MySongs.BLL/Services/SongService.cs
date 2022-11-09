@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
-using MySongs.DAL;
+using MySongs.DAL.Models;
 using MySongs.DTO;
 using MySongsWebApp.Interfaces;
-using Song = MySongs.DTO.Song;
 
 namespace MySongs.BLL.Services;
 
@@ -17,47 +16,63 @@ public class SongService : ISongService
         this.context = context;
     }
 
-    private void TestDB()
-    {
-        var songs = context.Songs.First();
-        var x = songs;
-
-    }
-
-    public List<Song> GetSongs()
+    public List<SongDTO> GetSongs()
     {
         logger.LogInformation("I'm getting songs");
-        TestDB();
-
-        var author1 = new Author { Id = 10, Name = "Pink Floyd" };
-        var author2 = new Author { Id = 20, Name = "Paul Simon"};
-        var author3 = new Author { Id = 30, Name = "Arl Garfunkel"};
-        var author4 = new Author { Id = 40, Name = "Iron Maiden"};
-        var author5 = new Author { Id = 50, Name = "Metallica"};
-        var author6 = new Author { Id = 60, Name = "Greta Van Fleet"};
-
+        var songs = context.Songs.ToList();
+        var songTypes = GetTypes();
+        var authors = GetAuthors();
         var types = GetTypes();
 
-
-        return new List<Song>{
-            new Song{Id=1, Title="Wish You Were Here", SongType=types[0], Authors=new List<Author>{ author1 } },
-            new Song{Id=2, Title="Dark Side of The Moon", SongType=types[0], Authors=new List<Author>{ author1 } },
-            new Song{Id=3, Title="The Sound of Silence", SongType=types[0], Authors=new List<Author>{ author2, author3 } },
-            new Song{Id=100, Title="Fear of the Dark", SongType=types[0], Authors=new List<Author>{ author4 } },
-            new Song{Id=102, Title="Run to the Hills", SongType=types[0], Authors=new List<Author>{ author5 } },
-            new Song{Id=201, Title="Nothing Else Matters", SongType=types[0], Authors=new List<Author>{ author5} },
-            new Song{Id=305, Title="Light My Love", SongType=types[0], Authors=new List<Author>{ author6 } },
-        };
-    }
-
-    public List<SongType> GetTypes()
-    {
-        return new List<SongType>
+        //This map is fake and only for training purposes
+        return songs.Select(s => new SongDTO
         {
-            new SongType{Id=10, Name="Rock"},
-            new SongType{Id=200, Name="Classic"},
-            new SongType{Id=300, Name="Pop"},
-            new SongType{Id=400, Name="Jazz"},
+            Id = s.Id,
+            Title = s.Title,
+            SongType = songTypes.FirstOrDefault(t => t.Id == s.Id) ?? new SongTypeDTO(),
+            Authors = new List<AuthorDTO> { GetRandomAuthor(authors) }
+        }).ToList();
+
+
+        //return new List<SongDTO>{
+        //    new SongDTO{Id=1, Title="Wish You Were Here", SongType=types[0], Authors=new List<AuthorDTO>{ author1 } },
+        //    new SongDTO{Id=2, Title="Dark Side of The Moon", SongType=types[0], Authors=new List<AuthorDTO>{ author1 } },
+        //    new SongDTO{Id=3, Title="The Sound of Silence", SongType=types[0], Authors=new List<AuthorDTO>{ author2, author3 } },
+        //    new SongDTO{Id=100, Title="Fear of the Dark", SongType=types[0], Authors=new List<AuthorDTO>{ author4 } },
+        //    new SongDTO{Id=102, Title="Run to the Hills", SongType=types[0], Authors=new List<AuthorDTO>{ author5 } },
+        //    new SongDTO{Id=201, Title="Nothing Else Matters", SongType=types[0], Authors=new List<AuthorDTO>{ author5} },
+        //    new SongDTO{Id=305, Title="Light My Love", SongType=types[0], Authors=new List<AuthorDTO>{ author6 } },
+        //};
+    }
+
+    public List<SongTypeDTO> GetTypes()
+    {
+        return new List<SongTypeDTO>
+        {
+            new SongTypeDTO{Id=10, Name="Rock"},
+            new SongTypeDTO{Id=200, Name="Classic"},
+            new SongTypeDTO{Id=300, Name="Pop"},
+            new SongTypeDTO{Id=400, Name="Jazz"},
         };
     }
+
+    private AuthorDTO GetRandomAuthor(List<AuthorDTO> authors)
+    {
+        Random r = new Random();
+        return authors[r.Next(0, authors.Count - 1)];
+    }
+
+    public List<AuthorDTO> GetAuthors()
+    {
+        return new List<AuthorDTO>
+        {
+            new AuthorDTO { Id = 10, Name = "Pink Floyd" },
+            new AuthorDTO { Id = 20, Name = "Paul Simon" },
+            new AuthorDTO { Id = 30, Name = "Arl Garfunkel" },
+            new AuthorDTO { Id = 40, Name = "Iron Maiden" },
+            new AuthorDTO { Id = 50, Name = "Metallica" },
+            new AuthorDTO { Id = 60, Name = "Greta Van Fleet" },
+        };
+    }
+
 }
