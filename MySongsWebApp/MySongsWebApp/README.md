@@ -9,3 +9,10 @@ dotnet ef migrations add InitialCreateSchool --context SchoolContext
 Create / Update DB:
 dotnet ef database update --context SchoolContext
 
+First Migrations
+dotnet ef migrations add AddStudentAddress --context SchoolContext
+dotnet ef migrations add AddPhoneNumber --context SongsDbContext
+
+Create Migrations Scripts
+dotnet ef migrations script --context SongsDbContext --output C:\temp\all.sql
+dotnet ef migrations script InitialCreateSongs --context SongsDbContext --output C:\temp\migration1.sql

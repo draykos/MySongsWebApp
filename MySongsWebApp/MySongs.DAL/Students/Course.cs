@@ -1,24 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MySongs.DAL.Students
 {
-    public enum Grade
+    public class Course
     {
-        A, B, C, D, F
-    }
-
-    public class Enrollment
-    {
-        public int EnrollmentID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int CourseID { get; set; }
-        public int StudentID { get; set; }
-        public Grade? Grade { get; set; }
+        public string Title { get; set; }
+        public int Credits { get; set; }
 
-        public Course Course { get; set; }
-        public Student Student { get; set; }
+        public ICollection<Enrollment> Enrollments { get; set; }
     }
 }

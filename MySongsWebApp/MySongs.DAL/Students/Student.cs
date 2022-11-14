@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MySongs.DAL.Students
 {
-    public class Course
+    public class Student
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int CourseID { get; set; }
-        public string Title { get; set; }
-        public int Credits { get; set; }
+        public int ID { get; set; }
+        public string LastName { get; set; }
+        public string FirstMidName { get; set; }
+        public string Address { get; set; }
+        public DateTime EnrollmentDate { get; set; }
 
         public ICollection<Enrollment> Enrollments { get; set; }
     }
