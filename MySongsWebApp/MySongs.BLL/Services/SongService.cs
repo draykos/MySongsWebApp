@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using MySongs.DAL.Models;
 using MySongs.DTO;
-using MySongsWebApp.Interfaces;
+using MySongs.BLL.Interfaces;
 
 namespace MySongs.BLL.Services;
 

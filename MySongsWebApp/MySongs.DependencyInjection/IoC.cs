@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MySongs.BLL.Services;
 using MySongs.DAL.Models;
 using MySongs.DAL.Students;
-using MySongsWebApp.Interfaces;
-using Npgsql;
+using MySongs.BLL.Services;
+using MySongs.BLL.Interfaces;
 
 namespace MySongs.DependencyInjection;
 
@@ -26,6 +25,7 @@ public static class IoC
         services.AddDatabaseDeveloperPageExceptionFilter();
 
         services.AddScoped<ISongService, SongService>();
+        services.AddScoped<IStudentService, StudentService>();
 
     }
 }

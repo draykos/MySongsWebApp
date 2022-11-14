@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MySongs.BLL.Interfaces;
 using MySongsWebApp.Common;
-using MySongsWebApp.Interfaces;
 using MySongsWebApp.Models;
 
 namespace MySongsWebApp.Controllers;

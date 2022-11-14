@@ -1,6 +1,6 @@
 ﻿using MySongs.DTO;
 
-namespace MySongsWebApp.Interfaces;
+namespace MySongs.BLL.Interfaces;
 
 public interface ISongService
 {
