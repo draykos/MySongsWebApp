@@ -24,6 +24,14 @@ try
 
     var app = builder.Build();
 
+
+    //Initialize DB
+    using (var scope = app.Services.CreateScope())
+    {
+        var serviceProvicer = scope.ServiceProvider;
+        Initializer.CreateStudentsDb(serviceProvicer);
+    }
+
     // Configure the HTTP request pipeline.
     if (!app.Environment.IsDevelopment())
     {
