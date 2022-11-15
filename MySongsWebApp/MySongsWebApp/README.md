@@ -16,3 +16,6 @@ dotnet ef migrations add AddPhoneNumber --context SongsDbContext
 Create Migrations Scripts
 dotnet ef migrations script --context SongsDbContext --output C:\temp\all.sql
 dotnet ef migrations script InitialCreateSongs --context SongsDbContext --output C:\temp\migration1.sql
+
+To update a different DB:
+dotnet ef database update --context <context> --connection "connection string"
