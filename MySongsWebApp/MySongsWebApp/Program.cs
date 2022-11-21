@@ -1,6 +1,8 @@
 using MySongs.DependencyInjection;
+using MySongs.DTO;
 using NLog;
 using NLog.Web;
+using System.Reflection;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
@@ -14,6 +16,8 @@ try
     // Add services to the container.
     services.AddControllersWithViews();
 
+    builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+    builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(StudentDTO)));
 
     //Dependencies injection
     IoC.Register(configuration, services);
