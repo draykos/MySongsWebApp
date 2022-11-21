@@ -17,5 +17,12 @@ Create Migrations Scripts
 dotnet ef migrations script --context SongsDbContext --output C:\temp\all.sql
 dotnet ef migrations script InitialCreateSongs --context SongsDbContext --output C:\temp\migration1.sql
 
+
+Identity Framework Migration
+dotnet ef migrations add AddIdentityFramework --context SchoolContext
+
+
 To update a different DB:
 dotnet ef database update --context <context> --connection "connection string"
+
+

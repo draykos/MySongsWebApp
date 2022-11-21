@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace MySongs.DAL.Students
 {
-    public class SchoolContext : DbContext
+    public class SchoolContext : IdentityDbContext
     {
         public SchoolContext()
         {
@@ -13,6 +14,10 @@ namespace MySongs.DAL.Students
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

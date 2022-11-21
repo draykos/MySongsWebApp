@@ -5,6 +5,7 @@ using MySongs.DAL.Models;
 using MySongs.DAL.Students;
 using MySongs.BLL.Services;
 using MySongs.BLL.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 namespace MySongs.DependencyInjection;
 
@@ -21,6 +22,9 @@ public static class IoC
 
         services.AddDbContext<SchoolContext>(options =>
                options.UseSqlServer(connectionString2));
+
+        services.AddIdentity<IdentityUser, IdentityRole>()
+            .AddEntityFrameworkStores<SchoolContext>();
 
         services.AddDatabaseDeveloperPageExceptionFilter();
 
