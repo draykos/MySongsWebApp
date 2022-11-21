@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MySongs.DAL.Students
 {
-    public class SchoolContext : IdentityDbContext
+    public class SchoolContext : IdentityDbContext<ApplicationUser>
     {
         public SchoolContext()
         {

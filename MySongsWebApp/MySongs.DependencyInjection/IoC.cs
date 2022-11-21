@@ -23,7 +23,7 @@ public static class IoC
         services.AddDbContext<SchoolContext>(options =>
                options.UseSqlServer(connectionString2));
 
-        services.AddIdentity<IdentityUser, IdentityRole>()
+        services.AddIdentity<ApplicationUser, IdentityRole>()
             .AddEntityFrameworkStores<SchoolContext>();
 
         services.Configure<IdentityOptions>(options =>

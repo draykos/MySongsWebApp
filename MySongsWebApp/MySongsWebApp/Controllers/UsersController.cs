@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MySongs.DAL.Models;
+using MySongs.DAL.Students;
 using MySongsWebApp.Models;
 
 namespace MySongsWebApp.Controllers;
@@ -8,10 +9,10 @@ namespace MySongsWebApp.Controllers;
 public class UsersController : Controller
 {
     private readonly ILogger<SettingsController> logger;
-    private readonly UserManager<IdentityUser> userManager;
-    private readonly SignInManager<IdentityUser> signinManager;
+    private readonly UserManager<ApplicationUser> userManager;
+    private readonly SignInManager<ApplicationUser> signinManager;
 
-    public UsersController(ILogger<SettingsController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signinManager)
+    public UsersController(ILogger<SettingsController> logger, UserManager<ApplicationUser> userManager, SignInManager<IdentityUser> signinManager)
     {
         this.logger = logger;
         this.userManager = userManager;
@@ -50,7 +51,7 @@ public class UsersController : Controller
         if (ModelState.IsValid)
         {
             logger.LogInformation("register is valid");
-            var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
             var result = await userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)

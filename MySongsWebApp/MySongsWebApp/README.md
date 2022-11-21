@@ -20,9 +20,13 @@ dotnet ef migrations script InitialCreateSongs --context SongsDbContext --output
 
 Identity Framework Migration
 dotnet ef migrations add AddIdentityFramework --context SchoolContext
+dotnet ef migrations add CustomizeIdentityUser --context SchoolContext
 
 
 To update a different DB:
 dotnet ef database update --context <context> --connection "connection string"
+
+Remove migration
+dotnet ef migrations remove
 
 
