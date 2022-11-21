@@ -1,0 +1,33 @@
+﻿@model MySongsWebApp.Models.RegisterViewModel
+@{
+    ViewData["Title"] = "User Registration";
+}
+
+<h1>Register user</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" asp-controller="Users" asp-action="Register">    
+            <div asp-validation-summary="All" style="color: red;"></div>
+            <div class="form-group">
+                <label asp-for="Email"></label><br />
+                <input asp-for="Email" />
+                <span asp-validation-for="Email" style="color: red;"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Password"></label><br />
+                <input asp-for="Password" />
+                <span asp-validation-for="Password" style="color: red;"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="ConfirmPassword"></label><br />
+                <input asp-for="ConfirmPassword" />
+                <span asp-validation-for="ConfirmPassword" style="color: red;"></span>
+            </div>
+            <br />
+            <input class="btn btn-primary" type="submit" value="Registra" />
+        </form> 
+    </div>
+</div>

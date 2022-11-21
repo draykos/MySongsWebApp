@@ -2,17 +2,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MySongsWebApp.Models;
 
-public class UserViewModel
+public class RegisterViewModel
 {
     [Required]
-    [StringLength(25)]
-    public string FirstName { get; set; } = String.Empty;
-
-    [Required(ErrorMessage = "Cognome non valido")]
-    [StringLength(50, MinimumLength = 3)]
-    public string LastName { get; set; } = String.Empty;
+    [EmailAddress]
+    public string Email{ get; set; } = String.Empty;
 
     [Required]
-    [EmailAddress]
-    public string MailAddress { get; set; } = String.Empty;
+    [DataType(DataType.Password)]
+    public string Password{ get; set; } = String.Empty;
+
+    [Required]
+    [DataType(DataType.Password)]
+    [Display(Name = "Conferma la password")]
+    [Compare("Password", ErrorMessage = "Le password non sono uguali")]
+    public string ConfirmPassword { get; set; } = String.Empty;
 }

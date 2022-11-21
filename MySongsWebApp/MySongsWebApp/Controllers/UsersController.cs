@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using MySongs.DAL.Models;
 using MySongsWebApp.Models;
 
 namespace MySongsWebApp.Controllers;
@@ -6,10 +8,14 @@ namespace MySongsWebApp.Controllers;
 public class UsersController : Controller
 {
     private readonly ILogger<SettingsController> logger;
+    private readonly UserManager<IdentityUser> userManager;
+    private readonly SignInManager<IdentityUser> signinManager;
 
-    public UsersController(ILogger<SettingsController> logger)
+    public UsersController(ILogger<SettingsController> logger, UserManager<IdentityUser> userManager ,SignInManager<IdentityUser> signinManager)
     {
         this.logger = logger;
+        this.userManager = userManager;
+        this.signinManager = signinManager;
     }
 
     [HttpGet]
@@ -30,4 +36,37 @@ public class UsersController : Controller
         }
         return View();
     }
+
+    [HttpPost]
+    public async Task<IActionResult> Register(RegisterViewModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            logger.LogInformation("register is valid");
+            var user = new IdentityUser { UserName = model.Email, Email = model.Email };
+            var result = await userManager.CreateAsync(user, model.Password);
+
+            if(result.Succeeded)
+            {
+                await signinManager.SignInAsync(user, isPersistent: false);
+                return View("RegisterSuccess", model);
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+
+        }
+
+        return View(model);
+    }
+
+    [HttpGet]
+    public IActionResult Register()
+    {
+        return View();
+    }
+
+
 }

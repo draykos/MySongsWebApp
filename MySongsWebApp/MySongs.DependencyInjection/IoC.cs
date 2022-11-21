@@ -26,6 +26,12 @@ public static class IoC
         services.AddIdentity<IdentityUser, IdentityRole>()
             .AddEntityFrameworkStores<SchoolContext>();
 
+        services.Configure<IdentityOptions>(options =>
+        {
+            options.Password.RequiredLength = 6;
+            options.Password.RequireNonAlphanumeric = true;
+        });
+
         services.AddDatabaseDeveloperPageExceptionFilter();
 
         services.AddScoped<ISongService, SongService>();
