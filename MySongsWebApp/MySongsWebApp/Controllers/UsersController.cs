@@ -88,10 +88,11 @@ public class UsersController : Controller
     [HttpPost]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
+
         if (ModelState.IsValid)
         {
             var result = await signinManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 return RedirectToAction("Index", "Home");
             }

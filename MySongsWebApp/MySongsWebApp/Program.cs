@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using MySongs.DependencyInjection;
 using MySongs.DTO;
 using NLog;
@@ -21,6 +22,14 @@ try
 
     //Dependencies injection
     IoC.Register(configuration, services);
+
+
+    //Authorize options
+    builder.Services.ConfigureApplicationCookie(options =>
+    {
+        //Location for your Custom Login Page
+        options.LoginPath = "/Users/Login";
+    });
 
     // NLog: Setup NLog for Dependency injection
     builder.Logging.ClearProviders();
