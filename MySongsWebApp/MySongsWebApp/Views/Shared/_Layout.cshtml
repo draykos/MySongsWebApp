@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject SignInManager<IdentityUser> signingManager;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,18 +26,36 @@
 @*                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-*@                        <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="users" asp-action="create">User</a>
                         </li>
+*@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="songs" asp-action="index">Songs</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="students" asp-action="index">Students</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="settings" asp-action="index">Settings</a>
-                        </li>
+                        <li class="flex-fill"></li>
+                        @if(signingManager.IsSignedIn(User))
+                        {
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="settings" asp-action="index">Settings</a>
+                            </li>
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="users" asp-action="logout">Logout</a>
+                            </li>
+
+                        } else
+                        {
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="users" asp-action="register">Register</a>
+                            </li>
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="users" asp-action="login">Login</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>

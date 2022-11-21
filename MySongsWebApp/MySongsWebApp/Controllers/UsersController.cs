@@ -11,7 +11,7 @@ public class UsersController : Controller
     private readonly UserManager<IdentityUser> userManager;
     private readonly SignInManager<IdentityUser> signinManager;
 
-    public UsersController(ILogger<SettingsController> logger, UserManager<IdentityUser> userManager ,SignInManager<IdentityUser> signinManager)
+    public UsersController(ILogger<SettingsController> logger, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signinManager)
     {
         this.logger = logger;
         this.userManager = userManager;
@@ -37,6 +37,13 @@ public class UsersController : Controller
         return View();
     }
 
+    #region Register
+    [HttpGet]
+    public IActionResult Register()
+    {
+        return View();
+    }
+
     [HttpPost]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
@@ -46,7 +53,7 @@ public class UsersController : Controller
             var user = new IdentityUser { UserName = model.Email, Email = model.Email };
             var result = await userManager.CreateAsync(user, model.Password);
 
-            if(result.Succeeded)
+            if (result.Succeeded)
             {
                 await signinManager.SignInAsync(user, isPersistent: false);
                 return View("RegisterSuccess", model);
@@ -62,11 +69,38 @@ public class UsersController : Controller
         return View(model);
     }
 
+    #endregion
+
+    #region Login / Logout
     [HttpGet]
-    public IActionResult Register()
+    public async Task<IActionResult> Logout()
+    {
+        await signinManager.SignOutAsync();
+        return RedirectToAction("Index", "Home");
+    }
+
+    [HttpGet]
+    public IActionResult Login()
     {
         return View();
     }
 
+    [HttpPost]
+    public async Task<IActionResult> Login(LoginViewModel model)
+    {
+        if (ModelState.IsValid)
+        {
+            var result = await signinManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+            if(result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            ModelState.AddModelError("LoginError", "utente o password non validi");
+        }
+
+        return View(model);
+    }
+    #endregion
 
 }
