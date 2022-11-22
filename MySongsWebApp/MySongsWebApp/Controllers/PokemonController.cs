@@ -1,32 +1,28 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MySongs.BLL.Interfaces;
-using MySongs.BLL.Services;
-using MySongsWebApp.Common;
-using MySongsWebApp.Models;
 
 namespace MySongsWebApp.Controllers;
 
-public class PokemonController : Controller
+public class PokemonsController : Controller
 {
-    private readonly ILogger<PokemonController> logger;
+    private readonly ILogger<PokemonsController> logger;
     private readonly IPokemonService pokemonService;
 
-    public PokemonController(ILogger<PokemonController> logger, IPokemonService pokemonService)
+    public PokemonsController(ILogger<PokemonsController> logger, IPokemonService pokemonService)
     {
         this.logger = logger;
         this.pokemonService = pokemonService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        var pokemons = pokemonService.GetPokemons();
+        var pokemons = await pokemonService.GetPokemons();
         return View(pokemons);
     }
 
-    public IActionResult Detail(int id)
+    public async Task<IActionResult> Detail(int id)
     {
-        var pokemon = pokemonService.GetPokemon(id);
+        var pokemon = await  pokemonService.GetPokemon(id);
         return View(pokemon);
     }
 }

@@ -2,21 +2,26 @@
 using MySongs.DTO;
 using MySongs.BLL.Interfaces;
 using Microsoft.Extensions.Configuration;
-using Flurl;
 using Flurl.Http;
 
 namespace MySongs.BLL.Services;
+
+
 
 
 public class PokemonService : IPokemonService
 {
     private readonly ILogger<SongService> logger;
     private readonly IConfiguration configuration;
+    private string baseUrl;
+
 
     public PokemonService(ILogger<SongService> logger, IConfiguration configuration)
     {
         this.logger = logger;
         this.configuration = configuration;
+        this.baseUrl = configuration.GetSection("AppSettings:PokemonApi").Value ?? String.Empty;
+
     }
 
     private int GetIdFromUrl(string url)
@@ -25,7 +30,7 @@ public class PokemonService : IPokemonService
         {
             //Quick & Dirty way to parse the ID
             var fragments = url.Split('/');
-            var ss = fragments[fragments.Length - 1];
+            var ss = fragments[fragments.Length - 2];
             return int.Parse(ss);
         }
         catch (Exception)
@@ -35,20 +40,19 @@ public class PokemonService : IPokemonService
     }
     public async Task<List<PokemonDTO>> GetPokemons()
     {
-        var baseUrl = configuration.GetSection("AppSettings.PokemonApi").Value ?? String.Empty;
-        var url = baseUrl.AppendPathSegment("/api/v2/pokemon/&limit=100");
-        var result = await url.GetAsync().ReceiveJson<List<PokemonDTO>>();
+        var url = $"{baseUrl}/api/v2/pokemon/?limit=100";
+        var data = await url.GetAsync().ReceiveJson<PokemonList>();
+        var results = data.Results;
 
         //Extract Id
-        result.ForEach(r => r.Id = GetIdFromUrl(r.Url));
+        results.ForEach(r => r.Id = GetIdFromUrl(r.Url));
 
-        return result;
+        return results;
     }
 
     public async Task<PokemonDetailDTO> GetPokemon(int id)
     {
-        var baseUrl = configuration.GetSection("AppSettings.PokemonApi").Value ?? String.Empty;
-        var url = baseUrl.AppendPathSegment($"/api/v2/pokemon/{id}");
+        var url = $"{baseUrl}/api/v2/pokemon/{id}";
         var result = await url.GetAsync().ReceiveJson<PokemonDetailDTO>();
         return result;
     }
