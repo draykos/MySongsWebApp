@@ -1,0 +1,17 @@
+﻿@using MySongs.DTO;
+@model List<PokemonDTO>
+
+<h1>Pokemon List</h1>
+
+<p>This is the Pokemon list</p>
+@if (Model is not null)
+{
+    <ul>
+        @foreach (var pokemon in Model)
+        {
+            <li>
+                <a asp-controller="pokemon" asp-action="detail" asp-route-id="@pokemon.Id">@pokemon.Name</a>
+            </li>
+        }
+    </ul>
+}

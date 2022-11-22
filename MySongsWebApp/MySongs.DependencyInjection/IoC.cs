@@ -36,6 +36,7 @@ public static class IoC
 
         services.AddScoped<ISongService, SongService>();
         services.AddScoped<IStudentService, StudentService>();
+        services.AddScoped<IPokemonService, PokemonService>();
 
     }
 }

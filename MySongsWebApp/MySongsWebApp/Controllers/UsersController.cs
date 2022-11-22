@@ -12,7 +12,7 @@ public class UsersController : Controller
     private readonly UserManager<ApplicationUser> userManager;
     private readonly SignInManager<ApplicationUser> signinManager;
 
-    public UsersController(ILogger<SettingsController> logger, UserManager<ApplicationUser> userManager, SignInManager<IdentityUser> signinManager)
+    public UsersController(ILogger<SettingsController> logger, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signinManager)
     {
         this.logger = logger;
         this.userManager = userManager;

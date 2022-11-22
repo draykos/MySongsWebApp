@@ -1,0 +1,12 @@
+﻿@using MySongs.DTO;
+@model PokemonDetailDTO
+
+<h1>Pokemon Detail</h1>
+
+<p>Name: @Model.Name</p>
+<p>Height: @Model.Height</p>
+<p>Weight: @Model.Weight</p>
+
+<button asp-controller="pokemon" asp-action="index" >Back to List</button>
+
+
