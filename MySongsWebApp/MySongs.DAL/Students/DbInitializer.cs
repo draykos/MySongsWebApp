@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -9,6 +10,28 @@ namespace MySongs.DAL.Students
 {
     public static class DbInitializer
     {
+
+        public static async Task CreateRoles(RoleManager<IdentityRole> roleManager)
+        {
+            if(roleManager.Roles.Any())
+            {
+                //Roles already created
+                return;
+            }
+
+            var roles = new IdentityRole[]
+            {
+                new IdentityRole("Admin"),
+                new IdentityRole("Editor"),
+                new IdentityRole("User")
+            };
+
+            foreach ( var role in roles)
+            {
+                await roleManager.CreateAsync(role);
+            }
+        }
+
         public static void Initialize(SchoolContext context)
         {
             context.Database.EnsureCreated();

@@ -38,7 +38,7 @@ try
     using (var scope = app.Services.CreateScope())
     {
         var serviceProvicer = scope.ServiceProvider;
-        Initializer.CreateStudentsDb(serviceProvicer);
+        await Initializer.CreateStudentsDb(serviceProvicer);
     }
 
     // Configure the HTTP request pipeline.
