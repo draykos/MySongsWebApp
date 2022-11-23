@@ -1,0 +1,44 @@
+﻿@model ApplicationUser
+@{
+    var userRoles = ViewData["UserRoles"] as List<string>;
+
+    bool UserHasRole(string roleName)
+    {
+        if(userRoles is null)
+        {
+            return false;
+        }
+        return userRoles.Any(r => r.ToLower() == roleName.ToLower());
+    }
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>User</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+</div>
+@if (UserHasRole("Admin")) {
+    <div>Questo utente è Admin</div>
+    <div>
+        <a asp-action="RemoveAdminRole" asp-route-id="@Model?.UserName">Rimuovi Admin</a>
+    </div>
+}
+else
+{
+    <div>
+        <a asp-action="AddAdminRole" asp-route-id="@Model?.UserName">Diventa Admin</a>
+    </div>
+}
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
