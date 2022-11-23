@@ -44,7 +44,7 @@ namespace MySongsWebApp.Controllers
         }
 
         // GET: Students/Create
-        [Authorize]
+        [Authorize(Roles = "Administrator")]
         public IActionResult Create()
         {
             return View();
