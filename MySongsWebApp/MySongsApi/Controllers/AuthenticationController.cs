@@ -64,7 +64,24 @@ namespace MySongsApi.Controllers
 
                 var token = tokenHandler.CreateToken(tokenDescriptor);
                 var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-                return Ok(new JWTTokenResponse { Token = tokenString });
+
+                tokenHandler = new JwtSecurityTokenHandler();
+                tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+                        new Claim(ClaimTypes.NameIdentifier, user.Id),
+                    }),
+                    Expires = DateTime.UtcNow.AddDays(30),
+                    Issuer = issuer,
+                    Audience = audience,
+                    SigningCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256Signature)
+                };
+                var refreshTokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+
+
+                return Ok(new JWTTokenResponse { Token = tokenString, RefreshToken = refreshTokenString });
             }
 
             return Unauthorized();
