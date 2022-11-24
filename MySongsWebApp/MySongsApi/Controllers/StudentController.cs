@@ -4,6 +4,7 @@ using MySongs.BLL.Interfaces;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MySongsApi.Controllers
 {
@@ -21,6 +22,7 @@ namespace MySongsApi.Controllers
         }
 
         [HttpGet()]
+        [Authorize]
         [Route("/api/students")]
         public async Task<IActionResult> GetList()
         {

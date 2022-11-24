@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MySongs.DTO;
 using MySongs.BLL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MySongsApi.Controllers
 {

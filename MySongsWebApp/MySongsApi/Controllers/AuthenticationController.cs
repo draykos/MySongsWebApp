@@ -50,7 +50,7 @@ namespace MySongsApi.Controllers
                     {
                         new Claim(ClaimTypes.NameIdentifier, user.Id),
                     }),
-                    Expires = DateTime.UtcNow.AddMinutes(10),
+                    Expires = DateTime.UtcNow.AddMinutes(30),
                     Issuer = issuer,
                     Audience = audience,
                     SigningCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256Signature)
